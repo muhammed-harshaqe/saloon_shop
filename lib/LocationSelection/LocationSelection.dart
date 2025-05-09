@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_shop/BottomNav/BottomNavMainScreen.dart';
 import 'package:saloon_shop/CurrentLocation/CurrentLocation.dart';
 import 'package:saloon_shop/location/Location.dart';
 
@@ -90,7 +91,7 @@ class _LocationselectionState extends State<Locationselection> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const Currentlocation()),
+                                      const Bottomnavmainscreen()),
                             );
                           },
                           child: Text("Use my current location",style: TextStyle(fontSize: 16),))

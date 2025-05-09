@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:saloon_shop/BookingTab/BookingTab.dart';
 import 'package:saloon_shop/Otp/OtpScreen.dart';
+import 'package:saloon_shop/ProfileTab/ProfileTab.dart';
+import 'package:saloon_shop/ServiceTab/ServiceTab.dart';
 import 'package:saloon_shop/signUp/Signup.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -33,11 +37,12 @@ class _LoginscreenState extends State<Loginscreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      Icons.arrow_circle_left_outlined,
-                      size: 60,
-                      color: Colors.white,
-                    )
+                    Image.asset(
+                      'assets/images/icon_back.png',
+                      // Replace with your actual image path
+                      width: 50, // Adjust size as needed
+                      height: 50,
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -49,30 +54,30 @@ class _LoginscreenState extends State<Loginscreen> {
                   children: [
                     Text(
                       "Log In",
-                      style: TextStyle(
-                          fontSize: 25,
+                      style: GoogleFonts.poppins(
+                          fontSize: 32,
                           color: Colors.white,
-                          fontWeight: FontWeight.w800),
+                          fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Text(
                       "Please sign in to your existing account",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: Colors.white70,
-                          fontWeight: FontWeight.w800),
+                          fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
                       "Enter mobile number",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           fontSize: 14,
                           color: Colors.white54,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 15,
@@ -82,7 +87,10 @@ class _LoginscreenState extends State<Loginscreen> {
                         Container(
                           width: 70,
                           child: TextField(
-                            style: TextStyle(color: Colors.white),
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18),
                             controller: _textEditingController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -112,7 +120,10 @@ class _LoginscreenState extends State<Loginscreen> {
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 labelText: 'Enter your Mobile Number',
-                                labelStyle: TextStyle(color: Colors.white),
+                                labelStyle: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide(
@@ -157,10 +168,10 @@ class _LoginscreenState extends State<Loginscreen> {
                             },
                             child: Text(
                               "Get OTP",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18),
                             ),
                           ),
                         ),
@@ -175,7 +186,10 @@ class _LoginscreenState extends State<Loginscreen> {
                       children: [
                         Text(
                           "Dont have an account?",
-                          style: TextStyle(color: Colors.white70),
+                          style: GoogleFonts.poppins(
+                              color: Colors.white70,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                         TextButton(
                             style: TextButton.styleFrom(
@@ -187,7 +201,11 @@ class _LoginscreenState extends State<Loginscreen> {
                                     builder: (context) => const Signup()),
                               );
                             },
-                            child: Text("Sign Up"))
+                            child: Text(
+                              "Sign Up",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
+                            ))
                       ],
                     )
                   ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:saloon_shop/location/Location.dart';
 import 'package:saloon_shop/signUp/Signup.dart';
 
@@ -33,10 +34,11 @@ class _OtpscreenState extends State<Otpscreen> {
                       MaterialPageRoute(builder: (context) => const Signup()),
                     ); // Go back to the previous screen
                   },
-                  child: Icon(
-                    Icons.arrow_circle_left_outlined,
-                    size: 60,
-                    color: Colors.white,
+                  child: Image.asset(
+                    'assets/images/icon_back.png',
+                    // Replace with your actual image path
+                    width: 50, // Adjust size as needed
+                    height: 50,
                   ),
                 ),
                 SizedBox(
@@ -48,39 +50,39 @@ class _OtpscreenState extends State<Otpscreen> {
                   children: [
                     Text(
                       "OTP",
-                      style: TextStyle(
-                          fontSize: 25,
+                      style: GoogleFonts.poppins(
+                          fontSize: 32,
                           color: Colors.white,
-                          fontWeight: FontWeight.w800),
+                          fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
                       "We have sent a code to your phone ",
-                      style: TextStyle(
+                      style: GoogleFonts.sen(
                           fontSize: 16,
                           color: Colors.white70,
-                          fontWeight: FontWeight.w800),
+                          fontWeight: FontWeight.w400),
                     ),
                     Row(
                       children: [
                         Text(
                           "Number ",
-                          style: TextStyle(
+                          style: GoogleFonts.sen(
                               fontSize: 16,
                               color: Colors.white70,
-                              fontWeight: FontWeight.w800),
+                              fontWeight: FontWeight.w400),
                         ),
                         SizedBox(
                           width: 5,
                         ),
                         Text(
                           "+919048769579 ",
-                          style: TextStyle(
+                          style: GoogleFonts.sen(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.w800),
+                              fontWeight: FontWeight.w400),
                         ),
                       ],
                     ),
@@ -89,10 +91,10 @@ class _OtpscreenState extends State<Otpscreen> {
                     ),
                     Text(
                       "Enter Otp",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           fontSize: 14,
                           color: Colors.white54,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 20,
@@ -153,9 +155,10 @@ class _OtpscreenState extends State<Otpscreen> {
                             },
                             child: Text(
                               "Submit",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.w600,
+                              fontSize: 18),
                             ),
                           ),
                         ),

@@ -42,6 +42,8 @@ dependencies:
   provider: ^6.1.2
   flutter_secure_storage: ^9.2.4
   qr_flutter: ^4.1.0
+  image_picker: ^1.0.4
+
 
 
 dev_dependencies:
@@ -76,6 +78,12 @@ flutter:
     - assets/images/internet.png
     - assets/images/addition.png
     - assets/images/minus.png
+    - assets/images/icon_back.png
+    - assets/images/star.png
+    - assets/images/call.png
+    - assets/images/shre.png
+    - assets/images/loctin.png
+    - assets/images/slprofile.jpeg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

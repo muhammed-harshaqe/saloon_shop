@@ -198,7 +198,7 @@ class _CurrentlocationState extends State<Currentlocation> {
                       Spacer(),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Itemlist()),
@@ -309,42 +309,42 @@ class _CurrentlocationState extends State<Currentlocation> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 80,
-        decoration: const BoxDecoration(
-          color: Colors.white12,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
-        ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.transparent,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white54,
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          iconSize: 25,
-          selectedFontSize: 16,
-          unselectedFontSize: 14,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today_outlined),
-              label: 'Bookings',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_outline_rounded),
-              label: 'Saved',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   height: 80,
+      //   decoration: const BoxDecoration(
+      //     color: Colors.white12,
+      //     borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
+      //   ),
+      //   child: BottomNavigationBar(
+      //     type: BottomNavigationBarType.fixed,
+      //     backgroundColor: Colors.transparent,
+      //     selectedItemColor: Colors.white,
+      //     unselectedItemColor: Colors.white54,
+      //     currentIndex: _selectedIndex,
+      //     onTap: _onItemTapped,
+      //     iconSize: 25,
+      //     selectedFontSize: 16,
+      //     unselectedFontSize: 14,
+      //     items: const [
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.home),
+      //         label: 'Home',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.calendar_today_outlined),
+      //         label: 'Bookings',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.favorite_outline_rounded),
+      //         label: 'Saved',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.person),
+      //         label: 'Profile',
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

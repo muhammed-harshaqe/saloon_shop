@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:saloon_shop/Booking/Booking.dart';
 import 'package:saloon_shop/ItemList/ItemList.dart';
 
 class Itemselection extends StatefulWidget {
@@ -35,19 +37,9 @@ class _ItemselectionState extends State<Itemselection> {
       "price": "₹80.00",
       "add_image": "assets/images/addition.png"
     },
-    //{"name": "null", "image": "null", "price": "null"}, // Test case for null values
   ];
-  List<Map<String, String>> Info = [
-    {
-      "name": "Elite Salon",
-      "image": "assets/images/elite.png",
-      "rating": "4.5",
-      "distance": "2.1 km",
-      "place": "Los Angels",
-      "After": "After : 12 persons"
-    },
-  ];
-  int? selectedIndex; // Track which service is selected
+
+  List<int> selectedIndices = []; // Track which services are selected
 
   @override
   Widget build(BuildContext context) {
@@ -56,275 +48,361 @@ class _ItemselectionState extends State<Itemselection> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
-                child: SizedBox(
-                  height: screenHeight * 0.3, // 30% of screen height
-                  width: screenWidth, // Full width of the screen
-                  child: Stack(
-                    children: [
-                      // Image with rounded corners
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20.0),
-                            topRight: Radius.circular(20.0)),
-                        child: Opacity(
-                          opacity: 0.5,
-                          child: Image.asset(
-                            'assets/images/thady.jpg',
-                            fit: BoxFit.fill,
-                            width: screenWidth,
-                            height: screenHeight * 0.3,
-                          ),
-                        ),
-                      ),
-
-                      // Icon placed at the top-left corner
-                      Positioned(
-                        top: 10, // Adjust this value to position the icon
-                        left: 10, // Adjust this value to position the icon
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.0),
-                            // Background for visibility
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_circle_left_outlined,
-                                color: Colors.white, size: 40),
-                            onPressed: () {
-                              // Navigates back when pressed
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Itemlist()),
-                              ); //
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Column(
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding:
+                EdgeInsets.only(bottom: selectedIndices.isNotEmpty ? 100 : 0),
+            // Add bottom padding
+            child: SafeArea(
+              child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Daddy Salon",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w800),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    // Adjust padding
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "KB Jacob rd, JLN Stadium, Fort Kochi, Kerala, 682001, India",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                    padding:
+                        const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+                    child: SizedBox(
+                      height: screenHeight * 0.3,
+                      width: screenWidth,
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              topRight: Radius.circular(20.0),
                             ),
-                            softWrap: true, // Wraps text into multiple lines
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      children: [
-                        Text("⭐ 4.5(1k+)",
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w800)),
-                        SizedBox(width: 10),
-                        Icon(
-                          Icons.stop_rounded,
-                          color: Colors.white54,
-                          size: 10,
-                        ),
-                        SizedBox(width: 10),
-                        Text("5 KM",
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w800)),
-                        SizedBox(width: 10),
-                        Icon(
-                          Icons.stop_rounded,
-                          color: Colors.white54,
-                          size: 10,
-                        ),
-                        SizedBox(width: 10),
-                        Icon(
-                          Icons.access_time,
-                          color: Colors.red,
-                          size: 20,
-                        ),
-                        Text(" 9 Am To 6 Pm",
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w800)),
-                        SizedBox(width: 10),
-                        Icon(
-                          Icons.stop_rounded,
-                          color: Colors.white54,
-                          size: 10,
-                        ),
-                        SizedBox(width: 10),
-                        Text("OPEN",
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w800)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.phone_outlined,
-                              color: Colors.white30,
-                              size: 30,
-                            ),
-                            Text(
-                              "Call",
-                              style: TextStyle(
-                                  color: Colors.white30, fontSize: 20),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/internet.png',
-                              color: Colors.white30,
-                              width: 30,
-                              height: 30,
-                            ),
-                            Text(
-                              "Website",
-                              style: TextStyle(
-                                color: Colors.white30,
-                                fontSize: 20,
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: Image.asset(
+                                'assets/images/thady.jpg',
+                                fit: BoxFit.fill,
+                                width: screenWidth,
+                                height: screenHeight * 0.3,
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.location_on_outlined,
-                              color: Colors.white30,
-                              size: 30,
                             ),
-                            Text(
-                              "Location",
-                              style: TextStyle(
-                                  color: Colors.white30, fontSize: 20),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.share_sharp,
-                              color: Colors.white30,
-                              size: 30,
+                          ),
+                          Positioned(
+                            top: 10,
+                            left: 10,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.0),
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Itemlist()),
+                                  );
+                                },
+                                child: Image.asset(
+                                  'assets/images/icon_back.png',
+                                  // Replace with your actual image path
+                                  width: 40, // Adjust size as needed
+                                  height: 40,
+                                ),
+                              ),
                             ),
-                            Text(
-                              "Share",
-                              style: TextStyle(
-                                  color: Colors.white30, fontSize: 20),
-                            )
-                          ],
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          "SERVICES",
-                          style: TextStyle(
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Daddy Salon",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                "KB Jacob rd, JLN Stadium, Fort Kochi, Kerala, 682001, India",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                softWrap: true,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Row(
+                          children: [
+                            Text("⭐ 4.5(1k+)",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400)),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.stop_rounded,
                               color: Colors.white54,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0,),
-                    child: Column(
-                      children: [
-                        Column(
-                          children: List.generate(services.length, (index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 15.0),
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 20.0),
-                                child: Row(
-                                  children: [
-                                    ClipOval(
-                                      child: Container(
-                                        height: 70,
-                                        width: 70,
-                                        color: selectedIndex == index
-                                            ? Colors.blueGrey.withOpacity(0.3) // Change background color when selected
-                                            : Colors.white10,
-                                        child: Center(
+                              size: 10,
+                            ),
+                            SizedBox(width: 10),
+                            Text("5 KM",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400)),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.stop_rounded,
+                              color: Colors.white54,
+                              size: 10,
+                            ),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.access_time,
+                              color: Colors.red,
+                              size: 20,
+                            ),
+                            Text(" 9 Am To 6 Pm",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400)),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.stop_rounded,
+                              color: Colors.white54,
+                              size: 10,
+                            ),
+                            SizedBox(width: 10),
+                            Text("OPEN",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/call.png',
+                                    // color: Colors.white30,
+                                    width: 25,
+                                    height: 25,
+                                    //size: 30,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "Call",
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white30,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/internet.png',
+                                  color: Colors.white30,
+                                  width: 25,
+                                  height: 25,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Website",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white30,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Column(
+                              children: [
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  color: Colors.white30,
+                                  size: 25,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Location",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white30,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/shre.png',
+                                  // color: Colors.white30,
+                                  width: 25,
+                                  height: 25,
+                                  //size: 30,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Share",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white30,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "SERVICES",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white54,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          children: [
+                            Column(
+                              children: List.generate(services.length, (index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 20.0),
+                                    child: Row(
+                                      children: [
+                                        ClipOval(
+                                          child: Container(
+                                            height: 70,
+                                            width: 70,
+                                            color:
+                                                selectedIndices.contains(index)
+                                                    ? Colors.blueGrey
+                                                        .withOpacity(0.3)
+                                                    : Colors.white10,
+                                            child: Center(
+                                              child: Image.asset(
+                                                services[index]["image"] ??
+                                                    "assets/images/default.png",
+                                                height: 30,
+                                                width: 30,
+                                                errorBuilder: (context, error,
+                                                    stackTrace) {
+                                                  return const Icon(Icons.image,
+                                                      color: Colors.white54);
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              services[index]["name"] ??
+                                                  "Unknown Service",
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Text(
+                                              services[index]["price"] ?? "₹0",
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        GestureDetector(
+                                          onTap: () {
+                                            if (selectedIndices
+                                                .contains(index)) {
+                                              setState(() {
+                                                selectedIndices.remove(index);
+                                              });
+                                            } else {
+                                              setState(() {
+                                                selectedIndices.add(index);
+                                              });
+                                            }
+                                          },
                                           child: Image.asset(
-                                            services[index]["image"] ??
-                                                "assets/images/default.png",
-                                            height: 30,
-                                            width: 30,
+                                            selectedIndices.contains(index)
+                                                ? "assets/images/minus.png"
+                                                : "assets/images/addition.png",
+                                            height: 25,
+                                            width: 25,
                                             errorBuilder:
                                                 (context, error, stackTrace) {
                                               return const Icon(Icons.image,
@@ -332,158 +410,85 @@ class _ItemselectionState extends State<Itemselection> {
                                             },
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 20),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          services[index]["name"] ??
-                                              "Unknown Service",
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        // Space between name & price
-                                        Text(
-                                          services[index]["price"] ?? "₹0",
-                                          style: const TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 16,
-                                          ),
-                                        ),
+                                        SizedBox(height: 30)
                                       ],
                                     ),
-                                    Spacer(),
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (selectedIndex == index) {
-                                          Navigator.pop(context);
-                                          setState(() => selectedIndex = null);
-                                        } else {
-                                          setState(() => selectedIndex = index);
-                                          showBottomPopup(context, index);
-                                        }
-                                      },
-                                      child: Image.asset(
-                                        selectedIndex == index
-                                            ? "assets/images/minus.png"
-                                            : "assets/images/addition.png",
-                                        // Show Add otherwise
-                                        height: 30,
-                                        width: 30,
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          return const Icon(Icons.image,
-                                              color: Colors.white54);
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(height: 30,)
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          if (selectedIndices.isNotEmpty)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Total",
+                          style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text(
+                          services[selectedIndices.last]["price"] ?? "₹0",
+                          style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  void showBottomPopup(BuildContext context, int index) {
-    showModalBottomSheet(
-      context: context,
-      isDismissible: false, // Prevents closing on outside tap
-      enableDrag: false, // Prevents dragging to close
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(0),
-          height: 100,
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Total",
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          //fontWeight: FontWeight.bold),
-                      )
-                    ),
-                    Text(
-                      services[index]["price"] ?? "₹0",
-                      style: const TextStyle(
-                          color: Colors.black,
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Booking()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 15),
+                      ),
+                      child: Text(
+                        "Book Now",
+                        style: GoogleFonts.poppins(
                           fontSize: 18,
-                          fontWeight: FontWeight.w800),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context); // Close popup
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const BookingScreen(),
-                          //   ),
-                          // );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5), // Non-circular button
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 15),
-                        ),
-                        child: const Text("Book Now",
-                            style:
-                                TextStyle(fontSize: 18, color: Colors.white)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    ).whenComplete(() {
-      // Reset index when popup closes
-      setState(() => selectedIndex = null);
-    });
+            ),
+        ],
+      ),
+    );
   }
 }

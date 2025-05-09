@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:saloon_shop/CurrentLocation/CurrentLocation.dart';
-import 'package:saloon_shop/itemSelction/ItemSelection.dart';
+import 'package:saloon_shop/ProfileTab/ProfileTab.dart';
 
-class Itemlist extends StatefulWidget {
-  const Itemlist({super.key});
+class Mybooking extends StatefulWidget {
+  const Mybooking({super.key});
 
   @override
-  State<Itemlist> createState() => _ItemlistState();
+  State<Mybooking> createState() => _MybookingState();
 }
 
-class _ItemlistState extends State<Itemlist> {
+class _MybookingState extends State<Mybooking> {
+
   List<Map<String, String>> salons = [
     {
       "name": "Elite Salon",
@@ -61,46 +61,47 @@ class _ItemlistState extends State<Itemlist> {
       "After": "After : 12 persons"
     },
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // Add padding to move the AppBar downward
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70), // Adjust the height of the AppBar
+        preferredSize: const Size.fromHeight(70),
         child: Padding(
-          padding: const EdgeInsets.only(top: 20.0), // Move the AppBar downward
+          padding: const EdgeInsets.only(top: 20.0, right: 20),
           child: AppBar(
             toolbarHeight: 60,
             backgroundColor: Colors.black,
             title: Center(
               child: Text(
-
-                "Saloons",
+                "Bookings",
                 style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
             ),
             leading: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                   Navigator.pushReplacement(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) => const Profiletab()),
+                  );
                 },
                 child: Image.asset(
-                'assets/images/icon_back.png', // Replace with your actual image path
-                width: 30, // Adjust size as needed
-                height: 30,
-              ),
+                  'assets/images/icon_back.png',
+                  width: 30,
+                  height: 30,
+                ),
               ),
             ),
           ),
         ),
       ),
-
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, top: 20),
         child: Column(
@@ -114,11 +115,11 @@ class _ItemlistState extends State<Itemlist> {
                     padding: const EdgeInsets.only(right: 0.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Itemselection()),
-                        ); // Go back to the previous screen
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => const Itemselection()),
+                        // ); // Go back to the previous screen
                       },
                       child: Card(
                         color: Colors.black,
@@ -142,7 +143,7 @@ class _ItemlistState extends State<Itemlist> {
                                   padding: const EdgeInsets.all(15.0),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(salons[index]["name"]!,
                                           style: const TextStyle(
@@ -178,6 +179,7 @@ class _ItemlistState extends State<Itemlist> {
           ],
         ),
       ),
+
     );
   }
 }
